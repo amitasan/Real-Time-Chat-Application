@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Realtime Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ Auth screen ============ -->
+<div id="auth" class="auth hidden">
+  <form id="auth-form" class="card" autocomplete="on">
+    <h1>💬 Realtime Chat</h1>
+    <div class="tabs">
+      <button type="button" id="tab-login" class="active">Log in</button>
+      <button type="button" id="tab-register">Sign up</button>
+    </div>
+    <input id="username" placeholder="Username" autocomplete="username" required>
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password" required>
+    <button id="auth-submit" type="submit" class="primary">Log in</button>
+    <p id="auth-error" class="error"></p>
+  </form>
+</div>
+
+<!-- ============ Chat screen ============ -->
+<div id="app" class="app hidden">
+  <aside id="sidebar">
+    <div class="me">
+      <span class="dot online"></span><strong id="me-name"></strong>
+      <button id="logout" title="Log out">Log out</button>
+    </div>
+    <div id="conn" class="conn hidden">Reconnecting…</div>
+
+    <h3>Rooms</h3>
+    <ul id="room-list"></ul>
+    <form id="room-form" class="inline-form">
+      <input id="room-name" placeholder="New room name" maxlength="30">
+      <button>+</button>
+    </form>
+
+    <h3>People</h3>
+    <ul id="user-list"></ul>
+  </aside>
+
+  <main id="chat">
+    <header>
+      <button id="menu" class="menu" aria-label="Menu">☰</button>
+      <div>
+        <div id="chat-title">Select a room or person</div>
+        <div id="chat-sub" class="sub"></div>
+      </div>
+      <button id="leave" class="hidden">Leave room</button>
+    </header>
+
+    <div id="messages" class="messages">
+      <div class="empty">Pick a room or start a private chat from the sidebar.</div>
+    </div>
+    <div id="typing" class="typing"></div>
+
+    <form id="composer" class="composer hidden">
+      <label class="attach" title="Share a file (max 10 MB)">📎
+        <input type="file" id="file" hidden>
+      </label>
+      <input id="text" placeholder="Type a message…" maxlength="2000" autocomplete="off">
+      <button class="primary">Send</button>
+    </form>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
